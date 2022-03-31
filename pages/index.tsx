@@ -1,13 +1,14 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetStaticProps } from "next";
 import { useState } from "react";
 import { getAllTodos, Todo } from "../lib/db";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const todos: Todo[] = await getAllTodos();
   return {
     props: {
       todos,
     },
+    revalidate: 10,
   };
 };
 
