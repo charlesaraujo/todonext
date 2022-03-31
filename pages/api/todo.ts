@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createTodo } from "../../lib/db";
+import { createTodo, getAllTodos } from "../../lib/db";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,5 +10,10 @@ export default async function handler(
     const data = JSON.parse(req.body);
     await createTodo(data.description);
     res.status(200).json({ message: "Sucesso" });
+  }
+
+  if (req.method === "GET") {
+    const data = await getAllTodos();
+    res.status(200).json(data.reverse());
   }
 }
