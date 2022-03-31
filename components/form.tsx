@@ -11,7 +11,7 @@ const Form = (props: any) => {
 
   return (
     <form onSubmit={handleSubmit} className="flex justify-center mt-10">
-      <div className="bg-gray-50 p-8 rounded-lg">
+      <div className="bg-gray-50 p-8 rounded-lg shadow">
         <h1 className="text-center mb-4 ">Adicionar</h1>
         <div className="flex space-x-2 p-2 rounded-md bg-gray-100 border">
           <input

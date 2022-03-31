@@ -39,7 +39,7 @@ const Item = (props: any) => {
         <span className="absolute -left-3 -top-3 bg-gray-900 flex justify-center items-center rounded-full w-8 h-8 text-gray-50 font-bold">
           {props.id}
         </span>
-        <p className="bg-white px-12 py-8 rounded-lg w-80">
+        <p className="bg-white px-12 py-8 rounded-lg w-80 shadow">
           {props.description}
         </p>
       </div>

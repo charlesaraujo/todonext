@@ -29,7 +29,6 @@ const Home = ({ todos }: PostProps) => {
   const [td, setTd] = useState(todos);
 
   const refresh = async () => {
-    console.log("refr");
     setTd(await getData());
   };
 
