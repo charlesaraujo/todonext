@@ -14,6 +14,6 @@ export default async function handler(
 
   if (req.method === "GET") {
     const data = await getAllTodos();
-    res.status(200).json(data.reverse());
+    res.status(200).json(data);
   }
 }

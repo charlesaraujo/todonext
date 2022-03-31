@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       todos,
     },
-    revalidate: 20,
+    revalidate: 5,
   };
 };
 
