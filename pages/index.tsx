@@ -4,21 +4,19 @@ import { useState } from "react";
 import Form from "../components/form";
 import Item from "../components/item";
 import { getAllTodos, Todo } from "../lib/db";
-import { server } from "../config";
 
 interface PostProps {
   todos: Todo[];
 }
 
 const getData = async () => {
-  console.log(`${server}/api/todo`);
-  const todos = await fetch(`${server}/api/todo`);
+  const todos = await fetch("/api/todo");
   return await todos.json();
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   //TODO: remover chamada direta pro db
-  const todos: Todo[] = await getData();
+  const todos: Todo[] = await getAllTodos();
   return {
     props: {
       todos,
