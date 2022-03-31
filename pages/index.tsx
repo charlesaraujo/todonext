@@ -10,12 +10,12 @@ interface PostProps {
 }
 
 const getData = async () => {
-  const todos = await fetch("http://localhost:3000/api/todo");
+  const todos = await fetch("/api/todo");
   return await todos.json();
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  //todo remover chamada direta pro db
+  //TODO: remover chamada direta pro db
   const todos: Todo[] = await getAllTodos();
   return {
     props: {
@@ -29,6 +29,7 @@ const Home = ({ todos }: PostProps) => {
   const [td, setTd] = useState(todos);
 
   const refresh = async () => {
+    console.log("refr");
     setTd(await getData());
   };
 
@@ -44,10 +45,12 @@ const Home = ({ todos }: PostProps) => {
 
   return (
     <>
+      {/* TODO: resolver problema com SEO ( não gera o title serverside) */}
       <Head>
         <title>A fazer</title>
         <meta name="description" content="Lista pessoal de afazeres" />
       </Head>
+
       <Form create={handleClick} />
       <div onClick={refresh}>
         {td?.map((item, index) => (
