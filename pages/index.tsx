@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Form from "../components/form";
 import Item from "../components/item";
-import { Todo } from "../lib/db";
+import { getAllTodos, Todo } from "../lib/db";
 
 interface PostProps {
   todos: Todo[];
@@ -15,7 +15,8 @@ const getData = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const todos: Todo[] = await getData();
+  //todo remover chamada direta pro db
+  const todos: Todo[] = await getAllTodos();
   return {
     props: {
       todos,
