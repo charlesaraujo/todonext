@@ -27,25 +27,25 @@ const Home = ({ todos }: PostProps) => {
   };
 
   return (
-    <div className="h-screen bg-gray-500">
-      <nav className="flex justify-center p-4 bg-gray-600">
+    <div className="min-h-screen bg-orange-700 pb-7">
+      <nav className="flex justify-center p-4 bg-gray-900">
         <h1 className="text-white text-2xl font-bold">Todo App</h1>
       </nav>
       <div>
         <form className="flex justify-center mt-10">
           <div className="bg-gray-50 p-8 rounded-lg">
-            <h1 className="text-center mb-4">Write Todo List</h1>
-            <div className="flex space-x-2 p-2 bg-white rounded-md">
+            <h1 className="text-center mb-4 ">Write Todo List</h1>
+            <div className="flex space-x-2 p-2 bg-white rounded-md bg-gray-100 border">
               <input
                 type="text"
                 placeholder="Write here..."
-                className="w-full outline-none"
+                className="w-full outline-none bg-inherit"
                 value={description}
                 onChange={(e) => setDescription(e.currentTarget.value)}
               />
               <button
                 onClick={handleClick}
-                className="bg-green-500 px-2 py-1 rounded-md text-white font-semibold"
+                className="bg-gray-900 px-2 py-1 rounded-md text-white font-semibold"
               >
                 send
               </button>
@@ -90,7 +90,7 @@ const Home = ({ todos }: PostProps) => {
                     </svg>
                   </span>
                 </div>
-                <span className="absolute -left-3 -top-3 bg-green-500 flex justify-center items-center rounded-full w-8 h-8 text-gray-50 font-bold">
+                <span className="absolute -left-3 -top-3 bg-gray-900 flex justify-center items-center rounded-full w-8 h-8 text-gray-50 font-bold">
                   {index + 1}
                 </span>
                 <p className="bg-white px-12 py-8 rounded-lg w-80">
