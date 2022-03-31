@@ -4,15 +4,15 @@ import { useState } from "react";
 import Form from "../components/form";
 import Item from "../components/item";
 import { getAllTodos, Todo } from "../lib/db";
+import { server } from "../config";
 
 interface PostProps {
   todos: Todo[];
 }
 
 const getData = async () => {
-  const url = process.env.VERCEL_URL || "";
-  console.log(`${url}/api/todo`);
-  const todos = await fetch(`${url}/api/todo`);
+  console.log(`${server}/api/todo`);
+  const todos = await fetch(`${server}/api/todo`);
   return await todos.json();
 };
 
