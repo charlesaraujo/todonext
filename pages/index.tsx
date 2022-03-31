@@ -10,13 +10,13 @@ interface PostProps {
 }
 
 const getData = async () => {
-  const todos = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/tod`);
+  const todos = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/todo`);
   return await todos.json();
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   //TODO: remover chamada direta pro db
-  const todos: Todo[] = await getAllTodos();
+  const todos: Todo[] = await getData();
   return {
     props: {
       todos,
