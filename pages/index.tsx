@@ -10,7 +10,7 @@ interface PostProps {
 }
 
 const getData = async () => {
-  const todos = await fetch("/api/todo");
+  const todos = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/tod`);
   return await todos.json();
 };
 
