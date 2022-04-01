@@ -4,7 +4,7 @@ import Header from "../components/header";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="min-h-screen bg-red-500 pb-7">
+    <div className="min-h-screen bg-zinc-900 pb-7">
       <Header />
       <Component {...pageProps} />
     </div>
