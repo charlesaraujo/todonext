@@ -5,9 +5,6 @@ import AddItem from "../components/addItem";
 import Form from "../components/form";
 import Item from "../components/item";
 import { getAllTodos, Todo } from "../lib/db";
-
-// TODO: criar _document
-// TODO: Add font
 interface PostProps {
   todos: Todo[];
 }
@@ -18,7 +15,6 @@ const getData = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  //TODO: remover chamada direta pro db
   const todos: Todo[] = await getAllTodos();
   return {
     props: {
@@ -52,6 +48,15 @@ const Home = ({ todos }: PostProps) => {
     });
     refresh();
   };
+  const handleSave = async (id: number, description: string, done: boolean) => {
+    if (!id) return;
+    if (!description) return;
+    await fetch("/api/todo", {
+      method: "PATCH",
+      body: JSON.stringify({ id, description, done }),
+    });
+    refresh();
+  };
 
   return (
     <div>
@@ -60,14 +65,12 @@ const Home = ({ todos }: PostProps) => {
         <title>A fazer</title>
         <meta name="description" content="Lista pessoal de afazeres" />
       </Head>
-
-      <Form create={handleAdd} />
       <div>
         {td?.map((item, index) => (
-          <Item {...item} key={index} delete={handleDelete} />
+          <Item {...item} delete={handleDelete} save={handleSave} key={index} />
         ))}
       </div>
-      <AddItem />
+      <AddItem create={handleAdd} />
     </div>
   );
 };
