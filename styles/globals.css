@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.text-alfa-slab {
+  font-family: "Alfa Slab One", cursive;
 }
