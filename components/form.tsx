@@ -7,7 +7,7 @@ const Form = (props: any) => {
     if (props.description) {
       setDescription(props.description);
     }
-  }, []);
+  }, [props.description]);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();

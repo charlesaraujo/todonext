@@ -1,6 +1,5 @@
 import { prisma } from "./prisma";
 
-// criar DONE
 export interface Todo {
   id: number;
   description: string;
@@ -13,6 +12,7 @@ export async function getAllTodos() {
 }
 
 export async function createTodo(description: string) {
+  if (!description) throw new Error("description is required");
   await prisma.todo.create({ data: { description } });
 }
 
@@ -27,6 +27,7 @@ export async function updateOne(
   done: boolean
 ) {
   if (!id) throw new Error("id is required");
+  if (!description) throw new Error("description is required");
   await prisma.todo.update({
     where: { id },
     data: { description, done },

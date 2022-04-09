@@ -2,12 +2,12 @@ import type { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import AddItem from "../components/addItem";
-import Form from "../components/form";
 import Item from "../components/item";
 import { getAllTodos, Todo } from "../lib/db";
 interface PostProps {
   todos: Todo[];
 }
+// TODO: remove tailwind after use mantine
 
 const getData = async () => {
   const todos = await fetch("/api/todo");
