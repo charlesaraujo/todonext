@@ -12,16 +12,11 @@ const AddItem = (props: any) => {
   return (
     <Box
       sx={(theme) => ({
-        backgroundColor:
-          theme.colorScheme === "dark"
-            ? theme.colors.dark[5]
-            : theme.colors.gray[1],
         textAlign: "center",
         borderRadius: theme.radius.md,
         boxShadow: theme.shadows.md,
         borderStyle: "dotted",
         borderWidth: "2px",
-        borderColor: theme.colors.gray[6],
       })}
     >
       {showForm && (
@@ -36,8 +31,8 @@ const AddItem = (props: any) => {
             "&:hover": {
               backgroundColor:
                 theme.colorScheme === "dark"
-                  ? theme.colors.dark[3]
-                  : theme.colors.gray[3],
+                  ? theme.colors.gray
+                  : theme.colors.gray[1],
             },
           })}
         >

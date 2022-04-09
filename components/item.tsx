@@ -25,7 +25,7 @@ const Item = (props: any) => {
         boxShadow: theme.shadows.md,
         backgroundColor:
           theme.colorScheme === "dark"
-            ? theme.colors.dark[5]
+            ? theme.colors.gray
             : theme.colors.gray[0],
         borderRadius: theme.radius.md,
       })}
