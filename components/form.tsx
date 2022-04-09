@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { Box, TextInput, Button, Space } from "@mantine/core";
 const Form = (props: any) => {
   const [description, setDescription] = useState("");
 
@@ -29,47 +29,52 @@ const Form = (props: any) => {
 
   return (
     <form onSubmit={handleSubmit} className="flex justify-center w-full">
-      <div className="relative justify-center mt-2 bg-zinc-50 rounded-md  shadow shadow-zinc-800 max-w-md w-full">
-        <div className="p-4">
-          <div className="flex space-x-2 bg-inherit border-none">
-            <input
-              type="text"
-              placeholder="Em que Você está trabalhando?"
-              className="w-full outline-none bg-inherit text-xl font-extrabold placeholder:italic placeholder:text-zinc-300 text-zinc-800"
-              value={description}
-              onChange={(e) => setDescription(e.currentTarget.value)}
-            />
-          </div>
-        </div>
+      <Box
+        sx={(theme) => ({
+          justifyContent: "center",
+          padding: theme.spacing.lg,
+        })}
+      >
+        <Box className="p-4">
+          <TextInput
+            size="lg"
+            required
+            placeholder="Em que Você está trabalhando?"
+            value={description}
+            onChange={(e) => setDescription(e.currentTarget.value)}
+          />
+        </Box>
 
-        <div className="bg-zinc-200 mt-1 px-4 py-2 w-full rounded-b-md flex justify-between">
-          <div>
+        <Box
+          sx={(theme) => ({
+            marginTop: theme.spacing.xs,
+            display: "flex",
+            justifyContent: "space-between",
+          })}
+        >
+          <Box>
             {props.id && (
-              <button
-                onClick={deletetar}
-                className="bg-zinc-800 text-zinc-50 px-2 py-1 rounded-md font-light disabled:bg-zinc-400"
-              >
-                Delete
-              </button>
+              <Button variant="subtle" uppercase onClick={deletetar}>
+                Deletar
+              </Button>
             )}
-          </div>
-          <div>
-            <button
-              onClick={cancel}
-              className="text-zinc-400 px-2 py-1 mr-2 font-light"
-            >
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <Button variant="outline" uppercase onClick={cancel}>
               Cancelar
-            </button>
-            <button
-              type="submit"
-              className="bg-zinc-800 text-zinc-50 px-2 py-1 rounded-md font-light disabled:bg-zinc-400"
-              disabled={!description}
-            >
+            </Button>
+            <Space w="sm" />
+            <Button type="submit" uppercase disabled={!description}>
               Salvar
-            </button>
-          </div>
-        </div>
-      </div>
+            </Button>
+          </Box>
+        </Box>
+      </Box>
     </form>
   );
 };

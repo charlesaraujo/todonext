@@ -1,7 +1,15 @@
+import { Center, Space, Divider, Title } from "@mantine/core";
+import ThemeButton from "./themeButton";
+
 const Header = () => {
   return (
-    <nav className="flex justify-center p-4 bg-inherit shadow shadow-zinc-700 ">
-      <h1 className="text-zinc-50 text-2xl text-alfa-slab">A fazer</h1>
+    <nav>
+      <Center sx={{ padding: "18px" }}>
+        <Title order={1}>A fazer</Title>
+        <Space w="xl" />
+        <ThemeButton />
+      </Center>
+      <Divider />
     </nav>
   );
 };

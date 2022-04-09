@@ -1,31 +1,35 @@
-import type { GetStaticProps } from "next";
-import Head from "next/head";
-import { useState } from "react";
+import type { GetStaticProps, NextPage } from "next";
+import { useEffect, useState } from "react";
+import { Center, Container, Stack } from "@mantine/core";
 import AddItem from "../components/addItem";
 import Item from "../components/item";
 import { getAllTodos, Todo } from "../lib/db";
+import SEO from "../components/seo";
+
 interface PostProps {
   todos: Todo[];
 }
-// TODO: remove tailwind after use mantine
 
 const getData = async () => {
   const todos = await fetch("/api/todo");
   return await todos.json();
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const todos: Todo[] = await getAllTodos();
-  return {
-    props: {
-      todos,
-    },
-    revalidate: 5,
-  };
-};
+// export const getStaticProps: GetStaticProps = async () => {
+//   const todos: Todo[] = await getAllTodos();
+//   return {
+//     props: {
+//       todos,
+//     },
+//     revalidate: 5,
+//   };
+// };
 
-const Home = ({ todos }: PostProps) => {
+const Home: NextPage<PostProps> = ({ todos }) => {
   const [td, setTd] = useState<Todo[]>(todos);
+  useEffect(() => {
+    refresh();
+  }, [td]);
 
   const refresh = async () => {
     //TODO: revalidate cache da home page pro no proximo request do cliente ser atualizado
@@ -40,6 +44,7 @@ const Home = ({ todos }: PostProps) => {
     });
     refresh();
   };
+
   const handleDelete = async (id: number) => {
     if (!id) return;
     await fetch("/api/todo", {
@@ -48,6 +53,7 @@ const Home = ({ todos }: PostProps) => {
     });
     refresh();
   };
+
   const handleSave = async (id: number, description: string, done: boolean) => {
     if (!id) return;
     if (!description) return;
@@ -59,19 +65,24 @@ const Home = ({ todos }: PostProps) => {
   };
 
   return (
-    <div>
-      {/* // TODO: resolver problema com SEO ( não gera o title serverside) */}
-      <Head>
-        <title>A fazer</title>
-        <meta name="description" content="Lista pessoal de afazeres" />
-      </Head>
-      <div>
-        {td?.map((item, index) => (
-          <Item {...item} delete={handleDelete} save={handleSave} key={index} />
-        ))}
-      </div>
-      <AddItem create={handleAdd} />
-    </div>
+    <>
+      <SEO title="Teste SEO" description="teste Description 66" />
+      <Container>
+        <Center sx={{ marginTop: "14px" }}>
+          <Stack spacing="lg" sx={{ width: "100%", maxWidth: "500px" }}>
+            {td?.map((item, index) => (
+              <Item
+                {...item}
+                delete={handleDelete}
+                save={handleSave}
+                key={index}
+              />
+            ))}
+            <AddItem create={handleAdd} />
+          </Stack>
+        </Center>
+      </Container>
+    </>
   );
 };
 
