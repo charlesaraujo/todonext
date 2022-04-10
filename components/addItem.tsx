@@ -1,36 +1,45 @@
 import { useState } from "react";
-import handler from "../pages/api/todo";
+import { Center, Box, Text } from "@mantine/core";
 import Form from "./form";
 
 const AddItem = (props: any) => {
   const [showForm, setShowForm] = useState(false);
-  function handlerCreate(description: string) {
-    props.create(description);
+  async function handlerCreate(description: string) {
+    await props.create(description);
     setShowForm(false);
   }
 
   return (
-    <div className="flex justify-center relative">
+    <Box
+      sx={(theme) => ({
+        textAlign: "center",
+        borderRadius: theme.radius.md,
+        boxShadow: theme.shadows.md,
+        borderStyle: "dotted",
+        borderWidth: "2px",
+      })}
+    >
       {showForm && (
         <Form create={handlerCreate} cancel={() => setShowForm(false)} />
       )}
       {!showForm && (
-        <div
+        <Center
           onClick={() => setShowForm(true)}
-          className=" flex 
-                    justify-center 
-                    cursor-pointer
-                    mt-2 
-                    bg-zinc-700 text-zinc-300
-                    rounded-md 
-                    px-8 py-4 
-                    max-w-md w-full
-                    border-2 border-zinc-400 border-dotted"
+          sx={(theme) => ({
+            cursor: "pointer",
+            padding: theme.spacing.lg,
+            "&:hover": {
+              backgroundColor:
+                theme.colorScheme === "dark"
+                  ? theme.colors.gray
+                  : theme.colors.gray[1],
+            },
+          })}
         >
-          <p>Adicionar tarefa</p>
-        </div>
+          <Text size="lg">Adicionar tarefa</Text>
+        </Center>
       )}
-    </div>
+    </Box>
   );
 };
 
