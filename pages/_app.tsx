@@ -18,6 +18,9 @@ import { AuthWrapper } from "../components/authWrapper";
 // TODO melhorar light theme
 // TODO adicionar pomodoro
 // TODO criar favicon
+// TODO Readme
+// TODO Licence
+// TODO github about
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
