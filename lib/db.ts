@@ -7,8 +7,7 @@ export interface Todo {
 }
 
 export async function getAllTodos() {
-  const data = await prisma.todo.findMany();
-  return data.reverse();
+  return await prisma.todo.findMany();
 }
 
 export async function createTodo(description: string) {

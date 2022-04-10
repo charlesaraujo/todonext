@@ -48,7 +48,7 @@ const Todos: NextPage<PostProps> = ({ todos }) => {
     <>
       <SEO title="Tarefas - A Fazer" description="Lista de coisas para fazer" />
       <Container>
-        <Center sx={{ marginTop: "14px" }}>
+        <Center sx={(theme) => ({ marginTop: theme.spacing.lg })}>
           <Stack spacing="lg" sx={{ width: "100%", maxWidth: "500px" }}>
             {data && data.length >= 0 ? (
               data?.map((item, index) => (

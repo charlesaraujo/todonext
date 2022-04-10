@@ -10,6 +10,14 @@ import DefaultTheme from "../styles/default.theme";
 import Header from "../components/header";
 import { AuthWrapper } from "../components/authWrapper";
 
+// TODO Relacionamento user e todos
+// TODO Proteger API de todos
+// TODO PWA
+// TODO lighthouse 100
+// TODO ordenar tarefas manualmente, e colocar tarafas done no final
+// TODO melhorar light theme
+// TODO adicionar pomodoro
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
     DefaultTheme.colorScheme as ColorScheme
