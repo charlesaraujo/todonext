@@ -1,24 +1,38 @@
 import { useState } from "react";
+import { ActionIcon, Box, Text, Space } from "@mantine/core";
+import { AiOutlineCheckCircle, AiFillEdit } from "react-icons/ai";
 import Form from "./form";
 
 const Item = (props: any) => {
   const [showForm, setShowForm] = useState(false);
+  const [load, setLoad] = useState(false);
 
-  function handlerDelete(id: number) {
-    props.delete(id);
+  async function handlerDelete(id: number) {
+    await props.delete(id);
     setShowForm(false);
   }
 
-  function handlerSave(id: number, description: string) {
-    props.save(id, description, props.done);
+  async function handlerSave(id: number, description: string) {
+    await props.save(id, description, props.done);
     setShowForm(false);
   }
-  function handlerDone(id: number, done: boolean) {
-    props.save(id, props.description, done);
+  async function handlerDone(id: number, done: boolean) {
+    setLoad(true);
+    await props.save(id, props.description, done);
+    setLoad(false);
   }
 
   return (
-    <div className="flex justify-center relative">
+    <Box
+      sx={(theme) => ({
+        boxShadow: theme.shadows.md,
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.gray
+            : theme.colors.gray[0],
+        borderRadius: theme.radius.md,
+      })}
+    >
       {showForm && (
         <Form
           {...props}
@@ -28,33 +42,50 @@ const Item = (props: any) => {
         />
       )}
       {!showForm && (
-        <div className=" flex relative justify-between  mt-2 bg-zinc-50 rounded-md px-4 py-4 shadow shadow-zinc-800 max-w-md w-full">
-          <div className="flex relative justify-between">
-            <span
-              onClick={() => handlerDone(props.id, !props.done)}
-              className={`cursor-pointer material-icons mr-2 ${
-                props.done ? "text-zinc-800" : "text-zinc-400"
-              }`}
-            >
-              check_circle
-            </span>
-            <p
-              className={`font-medium ${
-                props.done ? "line-through text-zinc-400" : "text-zinc-700"
-              }`}
-            >
-              {props.description} {props.done}
-            </p>
-          </div>
-          <span
-            className="material-icons-outlined cursor-pointer"
-            onClick={() => setShowForm(true)}
+        <Box
+          sx={(theme) => ({
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: theme.spacing.lg,
+          })}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
           >
-            mode_edit
-          </span>
-        </div>
+            <ActionIcon
+              title={props.done ? "Concluir a fazer" : "Voltar a fazer"}
+              variant="transparent"
+              loading={load}
+              sx={(theme) => ({
+                color: props.done
+                  ? theme.colors.green[5]
+                  : theme.colors.gray[5],
+              })}
+              onClick={() => handlerDone(props.id, !props.done)}
+            >
+              <AiOutlineCheckCircle size={24} />
+            </ActionIcon>
+            <Space w="xs" />
+            <Text
+              size="lg"
+              sx={(theme) => ({
+                color: props.done ? theme.colors.gray[5] : "inherit",
+                textDecoration: props.done ? "line-through" : "none",
+              })}
+            >
+              {props.description}
+            </Text>
+          </Box>
+          <ActionIcon title="Editar" onClick={() => setShowForm(true)}>
+            <AiFillEdit size={18} />
+          </ActionIcon>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

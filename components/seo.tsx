@@ -1,5 +1,5 @@
 import Head from "next/head";
-const NHead = ({ title, description, keywords, url = "", language }: any) => (
+const SEO = ({ title, description, keywords, url = "", language }: any) => (
   <Head>
     {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <meta name="theme-color" content="#118b92" />
@@ -7,6 +7,8 @@ const NHead = ({ title, description, keywords, url = "", language }: any) => (
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.ico" />
+
     {/* <meta name="keywords" content={keywords} />
 		<meta name="author" content="..." />
 
@@ -36,4 +38,4 @@ const NHead = ({ title, description, keywords, url = "", language }: any) => (
   </Head>
 );
 
-export default NHead;
+export default SEO;
