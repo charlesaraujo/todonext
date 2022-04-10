@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     }
   }, [router, status]);
 
-  if (status === "unauthenticated") return <LoadingOverlay visible={true} />;
+  if (status === "loading") return <LoadingOverlay visible={true} />;
 
   return <>{children}</>;
 };

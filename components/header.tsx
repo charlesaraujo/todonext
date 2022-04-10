@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Divider, Title, Button, Container, Box } from "@mantine/core";
+import { Divider, Title, Button, Container, Box, Loader } from "@mantine/core";
 import { AiFillGithub, AiOutlineLogout } from "react-icons/ai";
 import { signIn, useSession, signOut } from "next-auth/react";
 import ThemeButton from "./themeButton";
@@ -43,7 +43,13 @@ const Header = () => {
           </Title>
         </Link>
         <ThemeButton />
-        {status === "authenticated" ? (
+        {status === "loading" ? (
+          <Box
+            sx={{ width: "100px", display: "flex", justifyContent: "center" }}
+          >
+            <Loader size="sm" variant="dots" />
+          </Box>
+        ) : status === "authenticated" ? (
           <Box>
             <Link href="/todos" passHref>
               <Button component="a">Tarefas</Button>

@@ -17,6 +17,7 @@ import { AuthWrapper } from "../components/authWrapper";
 // TODO ordenar tarefas manualmente, e colocar tarafas done no final
 // TODO melhorar light theme
 // TODO adicionar pomodoro
+// TODO criar favicon
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
