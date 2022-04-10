@@ -1,26 +1,27 @@
 import type { NextPage } from "next";
-import Link from "next/link";
-import { Center, Container, Title, Button, Space, Text } from "@mantine/core";
-import { AiFillGithub } from "react-icons/ai";
-import useSWR from "swr";
+import { Center, Container, Space, Text } from "@mantine/core";
 import SEO from "../components/seo";
 
+// TODO Relacionamento user e todos
+// TODO PWA
+// TODO lighthouse 100
 const Home: NextPage<any> = () => {
   return (
     <>
-      <SEO title="Teste SEO" description="teste Description 66" />
+      <SEO
+        title="A Fazer"
+        description="Cadastre e conclua suas tarefas em qualquer lugar do mundo"
+      />
       <Container>
         <Center
           sx={{ marginTop: "14px", display: "flex", flexDirection: "column" }}
         >
           <Space h="lg" />
-          <Text> Conecte-se e comece a terminar suas tarefas</Text>
+          <Text>
+            Cadastre e conclua suas tarefas em qualquer lugar do mundo
+          </Text>
           <Space h="lg" />
-          <Link href="/dashboard" passHref>
-            <Button leftIcon={<AiFillGithub size={18} />} component="a" compact>
-              Entrar com Github
-            </Button>
-          </Link>
+          <Text> Conecte-se com o github para começar</Text>
         </Center>
       </Container>
     </>

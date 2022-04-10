@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Box, TextInput, Button, Space } from "@mantine/core";
+import { Box, TextInput, Button, Space, LoadingOverlay } from "@mantine/core";
 const Form = (props: any) => {
   const [description, setDescription] = useState("");
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     if (props.description) {
@@ -9,32 +10,44 @@ const Form = (props: any) => {
     }
   }, [props.description]);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoad(true);
     if (props.id) {
-      props.save(props.id, description);
+      await props.save(props.id, description);
+      setLoad(false);
       return;
     }
-    props.create(description);
+    await props.create(description);
     setDescription("");
+    setLoad(false);
   };
   const cancel = (e: any) => {
     e.preventDefault();
     props.cancel();
   };
-  const deletetar = (e: any) => {
+  const deletetar = async (e: any) => {
+    setLoad(true);
     e.preventDefault();
-    props.delete(props.id);
+    await props.delete(props.id);
+    setLoad(false);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex justify-center w-full">
+    <form onSubmit={handleSubmit}>
       <Box
         sx={(theme) => ({
           justifyContent: "center",
+          position: "relative",
           padding: theme.spacing.lg,
         })}
       >
+        <LoadingOverlay
+          sx={(theme) => ({
+            borderRadius: theme.radius.md,
+          })}
+          visible={load}
+        />
         <Box className="p-4">
           <TextInput
             size="lg"

@@ -4,8 +4,8 @@ import Form from "./form";
 
 const AddItem = (props: any) => {
   const [showForm, setShowForm] = useState(false);
-  function handlerCreate(description: string) {
-    props.create(description);
+  async function handlerCreate(description: string) {
+    await props.create(description);
     setShowForm(false);
   }
 

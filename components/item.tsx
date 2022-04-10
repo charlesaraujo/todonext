@@ -5,18 +5,21 @@ import Form from "./form";
 
 const Item = (props: any) => {
   const [showForm, setShowForm] = useState(false);
+  const [load, setLoad] = useState(false);
 
-  function handlerDelete(id: number) {
-    props.delete(id);
+  async function handlerDelete(id: number) {
+    await props.delete(id);
     setShowForm(false);
   }
 
-  function handlerSave(id: number, description: string) {
-    props.save(id, description, props.done);
+  async function handlerSave(id: number, description: string) {
+    await props.save(id, description, props.done);
     setShowForm(false);
   }
-  function handlerDone(id: number, done: boolean) {
-    props.save(id, props.description, done);
+  async function handlerDone(id: number, done: boolean) {
+    setLoad(true);
+    await props.save(id, props.description, done);
+    setLoad(false);
   }
 
   return (
@@ -56,6 +59,7 @@ const Item = (props: any) => {
             <ActionIcon
               title={props.done ? "Concluir a fazer" : "Voltar a fazer"}
               variant="transparent"
+              loading={load}
               sx={(theme) => ({
                 color: props.done
                   ? theme.colors.green[5]

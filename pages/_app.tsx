@@ -5,8 +5,10 @@ import {
   ColorSchemeProvider,
   ColorScheme,
 } from "@mantine/core";
+import { SessionProvider } from "next-auth/react";
 import DefaultTheme from "../styles/default.theme";
 import Header from "../components/header";
+import { AuthWrapper } from "../components/authWrapper";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
@@ -15,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
-    
+
   return (
     <ColorSchemeProvider
       colorScheme={colorScheme}
@@ -26,10 +28,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         withNormalizeCSS
         theme={{ ...DefaultTheme, colorScheme }}
       >
-        <Header />
-        <main>
-          <Component {...pageProps} />
-        </main>
+        <SessionProvider session={pageProps.session}>
+          <AuthWrapper>
+            <Header />
+            <main>
+              <Component {...pageProps} />
+            </main>
+          </AuthWrapper>
+        </SessionProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   );

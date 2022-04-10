@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Center, Container, Stack } from "@mantine/core";
+import { Center, Container, LoadingOverlay, Stack } from "@mantine/core";
 import useSWR, { useSWRConfig } from "swr";
 import AddItem from "../components/addItem";
 import Item from "../components/item";
@@ -10,7 +10,7 @@ interface PostProps {
   todos: Todo[];
 }
 
-const Dashboard: NextPage<PostProps> = ({ todos }) => {
+const Todos: NextPage<PostProps> = ({ todos }) => {
   const { mutate } = useSWRConfig();
   const { data, error } = useSWR<Todo[]>(`/api/todo`, (url: string) =>
     fetch(url).then((res) => res.json())
@@ -46,21 +46,22 @@ const Dashboard: NextPage<PostProps> = ({ todos }) => {
 
   return (
     <>
-      <SEO
-        title="Dashboard - A Fazer"
-        description="Lista de coisas para fazer"
-      />
+      <SEO title="Tarefas - A Fazer" description="Lista de coisas para fazer" />
       <Container>
         <Center sx={{ marginTop: "14px" }}>
           <Stack spacing="lg" sx={{ width: "100%", maxWidth: "500px" }}>
-            {data?.map((item, index) => (
-              <Item
-                {...item}
-                delete={handleDelete}
-                save={handleSave}
-                key={index}
-              />
-            ))}
+            {data && data.length >= 0 ? (
+              data?.map((item, index) => (
+                <Item
+                  {...item}
+                  delete={handleDelete}
+                  save={handleSave}
+                  key={index}
+                />
+              ))
+            ) : (
+              <LoadingOverlay visible={true} />
+            )}
             <AddItem create={handleAdd} />
           </Stack>
         </Center>
@@ -69,4 +70,4 @@ const Dashboard: NextPage<PostProps> = ({ todos }) => {
   );
 };
 
-export default Dashboard;
+export default Todos;
