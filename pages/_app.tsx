@@ -22,6 +22,8 @@ import { AuthWrapper } from "../components/authWrapper";
 // TODO Licence
 // TODO github about
 // TODO adsense
+// TODO add capacitor
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
