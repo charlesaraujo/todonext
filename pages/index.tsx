@@ -10,12 +10,7 @@ interface PostProps {
   todos: Todo[];
 }
 
-const getData = async () => {
-  const todos = await fetch("/api/todo");
-  return await todos.json();
-};
-
-// export const getStaticProps: GetStaticProps = async () => {
+// export async function getStaticProps() {
 //   const todos: Todo[] = await getAllTodos();
 //   return {
 //     props: {
@@ -23,16 +18,23 @@ const getData = async () => {
 //     },
 //     revalidate: 5,
 //   };
-// };
+// }
 
 const Home: NextPage<PostProps> = ({ todos }) => {
   const [td, setTd] = useState<Todo[]>(todos);
+
   useEffect(() => {
+    console.log("Opaa");
     refresh();
-  }, [td]);
+  }, []);
+
+  const getData = async () => {
+    // guardar dados local para deixar mais rapido
+    const todos = await fetch("/api/todo");
+    return await todos.json();
+  };
 
   const refresh = async () => {
-    //TODO: revalidate cache da home page pro no proximo request do cliente ser atualizado
     setTd(await getData());
   };
 
