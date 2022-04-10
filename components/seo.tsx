@@ -7,7 +7,8 @@ const SEO = ({ title, description, keywords, url = "", language }: any) => (
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     {/* <meta name="keywords" content={keywords} />
 		<meta name="author" content="..." />
