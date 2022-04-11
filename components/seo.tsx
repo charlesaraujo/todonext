@@ -1,15 +1,9 @@
 import Head from "next/head";
 const SEO = ({ title, description, keywords, url = "", language }: any) => (
   <Head>
-    {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    <meta name="theme-color" content="#118b92" />
-    <link rel="manifest" href="/static/manifest/manifest.json" /> */}
-
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
+    <meta name="viewport" content="width=360, initial-scale=1" />
     {/* <meta name="keywords" content={keywords} />
 		<meta name="author" content="..." />
 
