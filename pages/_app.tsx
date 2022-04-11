@@ -10,17 +10,15 @@ import DefaultTheme from "../styles/default.theme";
 import Header from "../components/header";
 import { AuthWrapper } from "../components/authWrapper";
 
+// TODO adsense
 // TODO Relacionamento user e todos
-// TODO Proteger API de apenas pra logado
-// TODO lighthouse 100
 // TODO ordenar tarefas manualmente, e colocar tarafas done no final
 // TODO melhorar light theme
 // TODO adicionar pomodoro
 // TODO Readme
-// TODO Licence
 // TODO github about
-// TODO adsense
 // TODO add capacitor
+// TODO melhorias lighthouse webpagetest e pwabuilder
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
