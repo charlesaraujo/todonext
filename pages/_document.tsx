@@ -10,6 +10,15 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name="theme-color" content="#ffffff" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/favicon.svg" />
+
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+          <link rel="mask-icon" href="/favicon.svg" color="white" />
+
           <link
             href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap"
             rel="stylesheet"
