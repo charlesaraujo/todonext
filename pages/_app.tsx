@@ -11,19 +11,16 @@ import Header from "../components/header";
 import { AuthWrapper } from "../components/authWrapper";
 
 // TODO Relacionamento user e todos
-// TODO Proteger API de todos
-// TODO PWA
+// TODO Proteger API de apenas pra logado
 // TODO lighthouse 100
 // TODO ordenar tarefas manualmente, e colocar tarafas done no final
 // TODO melhorar light theme
 // TODO adicionar pomodoro
-// TODO criar favicon
 // TODO Readme
 // TODO Licence
 // TODO github about
 // TODO adsense
 // TODO add capacitor
-
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
