@@ -11,15 +11,15 @@ import Header from "../components/header";
 import { AuthWrapper } from "../components/authWrapper";
 import Script from "next/script";
 
-// TODO adsense
 // TODO Relacionamento user e todos
 // TODO ordenar tarefas manualmente, e colocar tarafas done no final
-// TODO melhorar light theme
+// TODO melhorar light theme e tbm cores do thema nos celulares
 // TODO adicionar pomodoro
 // TODO Readme
 // TODO github about
 // TODO add capacitor
 // TODO melhorias lighthouse webpagetest e pwabuilder
+// TODO adsense https://medium.com/nextjs/how-to-add-google-adsense-in-your-nextjs-89e439f74de3
 // TODO CSP header https://nextjs.org/docs/api-reference/next.config.js/headers
 
 function MyApp({ Component, pageProps }: AppProps) {
