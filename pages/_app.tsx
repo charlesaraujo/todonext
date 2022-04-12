@@ -35,7 +35,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Script
         id="adsense"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4491598321720758"
-        strategy="worker"
         crossOrigin="anonymous"
       />
       <ColorSchemeProvider
