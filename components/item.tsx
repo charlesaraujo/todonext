@@ -25,12 +25,17 @@ const Item = (props: any) => {
   return (
     <Box
       sx={(theme) => ({
-        boxShadow: theme.shadows.md,
+        boxShadow: theme.shadows.lg,
         backgroundColor:
           theme.colorScheme === "dark"
             ? theme.colors.gray
             : theme.colors.gray[0],
         borderRadius: theme.radius.md,
+        border: "1px solid",
+        borderColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.gray[8]
+            : theme.colors.gray[3],
       })}
     >
       {showForm && (

@@ -10,7 +10,16 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="theme-color" content="#ffffff" />
+          <meta
+            name="theme-color"
+            content="#f8f9fa"
+            media="(prefers-color-scheme: light)"
+          />
+          <meta
+            name="theme-color"
+            content="#1A1B1E"
+            media="(prefers-color-scheme: dark)"
+          />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/favicon.svg" />
 

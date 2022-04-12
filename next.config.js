@@ -14,6 +14,9 @@ const nextConfig = withPWA({
     locales: ["pt-br"],
     defaultLocale: "pt-br",
   },
+  experimental: {
+    nextScriptWorkers: true,
+  },
 });
 
 module.exports = nextConfig;
