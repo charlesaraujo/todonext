@@ -1,12 +1,37 @@
 {
   "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF",
-  "display": "standalone",
+  "background_color": "#ffffff",
+  "display": "minimal-ui",
   "scope": "/",
   "start_url": "/",
   "name": "A fazer",
   "short_name": "A fazer",
   "description": "Cadastre e conclua suas tarefas em qualquer lugar do mundo",
+  "orientation": "any",
+  "categories": [
+    "promodoro",
+    "productivity",
+    "social",
+    "travel",
+    "work",
+    "todo"
+  ],
+  "screenshots": [
+    {
+      "src": "/a-fazer-home-screenshot.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Tela inicial"
+    },
+    {
+      "src": "/a-fazer-tasks-screenshot.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Lista de tarefazer"
+    }
+  ],
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -26,7 +51,8 @@
     {
       "src": "/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

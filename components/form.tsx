@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Box, TextInput, Button, Space, LoadingOverlay } from "@mantine/core";
+import { useFocusTrap } from "@mantine/hooks";
 const Form = (props: any) => {
   const [description, setDescription] = useState("");
   const [load, setLoad] = useState(false);
+  const focusTrapRef = useFocusTrap();
 
   useEffect(() => {
     if (props.description) {
@@ -51,6 +53,7 @@ const Form = (props: any) => {
         <Box className="p-4">
           <TextInput
             size="lg"
+            ref={focusTrapRef}
             required
             placeholder="Em que Você está trabalhando?"
             value={description}
