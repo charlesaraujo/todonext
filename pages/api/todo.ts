@@ -18,20 +18,20 @@ export default async function handler(
 
   if (req.method === "POST") {
     const data = JSON.parse(req.body);
-    await createTodo(data.description);
-    res.status(200).json({ message: "Sucesso" });
+    const result = await createTodo(data.description);
+    res.status(200).json({ message: "Sucesso", todo: result });
   }
 
   if (req.method === "DELETE") {
     const data = JSON.parse(req.body);
-    await deleteOne(data.id);
-    res.status(200).json({ message: "Sucesso" });
+    const { id } = await deleteOne(data.id);
+    res.status(200).json({ message: "Sucesso", id });
   }
 
   if (req.method === "PATCH") {
     const data = JSON.parse(req.body);
-    await updateOne(data.id, data.description, data.done);
-    res.status(200).json({ message: "Sucesso" });
+    const result = await updateOne(data.id, data.description, data.done);
+    res.status(200).json({ message: "Sucesso", todo: result });
   }
 
   if (req.method === "GET") {
