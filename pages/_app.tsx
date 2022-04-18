@@ -17,7 +17,7 @@ import AppWrapper from "../components/appWrapper";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Script
+      <script
         id="adsense"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4491598321720758"
         crossOrigin="anonymous"
