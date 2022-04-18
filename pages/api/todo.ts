@@ -10,8 +10,8 @@ export default async function handler(
   const session = await getSession({ req });
 
   if (!session || !session.userId) {
-    res.send({
-      error: "You must be sign in to view the protected content on this page.",
+    res.status(401).json({
+      error: "Vc precisa estar logado para acessar essa rota",
     });
     return;
   }

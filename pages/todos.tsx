@@ -10,7 +10,7 @@ import SEO from "../components/seo";
 interface PostProps {
   todos: Todo[];
 }
-
+// pagina depreciada, agora é a index a ser chamada
 const Todos: NextPage<PostProps> = () => {
   const { todos, add, remove, save, fetcher } = useTodoStore();
   useSWR(`getTodos`, fetcher);

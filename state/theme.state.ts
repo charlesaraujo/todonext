@@ -13,6 +13,6 @@ export const useThemeStore = create<Store>(
       colorScheme: DefaultTheme.colorScheme as ColorScheme,
       setColorScheme: (colorScheme) => set({ colorScheme }),
     }),
-    { name: "theme-store" }
+    { name: "theme-store", version: 1 }
   )
 );

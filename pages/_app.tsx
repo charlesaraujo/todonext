@@ -11,8 +11,9 @@ import AppWrapper from "../components/appWrapper";
 // TODO melhorias lighthouse webpagetest e pwabuilder
 // TODO adsense https://medium.com/nextjs/how-to-add-google-adsense-in-your-nextjs-89e439f74de3 https://www.npmjs.com/package/next-pwa
 // TODO CSP header https://nextjs.org/docs/api-reference/next.config.js/headers
-// TODO Permitir usuario usar app sem logar
 // TODO adicionar mais opções de login
+// TODO colocar avatar do usuario
+// TODO descobrir se usuario é novo e salvar os todos adicionados antes do login
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
