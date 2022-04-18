@@ -13,12 +13,12 @@ datasource db {
 }
 
 model todo{
-  id Int  @default(autoincrement())
+  id Int @unique @default(autoincrement())
   description String    @db.Text()
   done        Boolean   @default(false)
   userId      String
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  @@id([id, userId])
+  @@id([id, userId]) 
 }
 
 model Account {
