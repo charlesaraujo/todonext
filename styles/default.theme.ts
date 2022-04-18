@@ -4,7 +4,7 @@ const DefaultTheme: MantineThemeOverride = {
   fontFamily: "Fira Sans, sans-serif",
   fontFamilyMonospace: "Monaco, Courier, monospace",
   headings: { fontFamily: "Alfa Slab One, cursive" },
-  colorScheme: "dark",
+  colorScheme: "light",
   white: "#f8f9fa",
 };
 

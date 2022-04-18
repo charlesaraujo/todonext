@@ -1,7 +1,7 @@
 {
-  "theme_color": "#FFFFFF",
-  "background_color": "#ffffff",
-  "display": "minimal-ui",
+  "theme_color": "#f8f9fa",
+  "background_color": "#f8f9fa",
+  "display": "fullscreen",
   "scope": "/",
   "start_url": "/",
   "name": "A fazer",
