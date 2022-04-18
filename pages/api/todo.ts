@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   const session = await getSession({ req });
 
-  if (!session) {
+  if (!session || !session.userId) {
     res.send({
       error: "You must be sign in to view the protected content on this page.",
     });
