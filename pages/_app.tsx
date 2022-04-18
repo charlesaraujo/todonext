@@ -3,7 +3,6 @@ import Script from "next/script";
 import { SessionProvider } from "next-auth/react";
 import AppWrapper from "../components/appWrapper";
 
-// TODO Relacionamento user e todos
 // TODO ordenar tarefas manualmente, e colocar tarafas done no final https://github.com/SortableJS/Sortable
 // TODO adicionar pomodoro
 // TODO Readme
@@ -12,6 +11,8 @@ import AppWrapper from "../components/appWrapper";
 // TODO melhorias lighthouse webpagetest e pwabuilder
 // TODO adsense https://medium.com/nextjs/how-to-add-google-adsense-in-your-nextjs-89e439f74de3 https://www.npmjs.com/package/next-pwa
 // TODO CSP header https://nextjs.org/docs/api-reference/next.config.js/headers
+// TODO Permitir usuario usar app sem logar
+// TODO adicionar mais opções de login
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

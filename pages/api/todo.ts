@@ -16,26 +16,31 @@ export default async function handler(
     return;
   }
 
+  if (req.method === "GET") {
+    const data = await getAllTodos(session.userId as string);
+    res.status(200).json(data);
+  }
+
   if (req.method === "POST") {
     const data = JSON.parse(req.body);
-    const result = await createTodo(data.description);
+    const result = await createTodo(data.description, session.userId as string);
     res.status(200).json({ message: "Sucesso", todo: result });
   }
 
   if (req.method === "DELETE") {
     const data = JSON.parse(req.body);
-    const { id } = await deleteOne(data.id);
+    const { id } = await deleteOne(data.id, session.userId as string);
     res.status(200).json({ message: "Sucesso", id });
   }
 
   if (req.method === "PATCH") {
     const data = JSON.parse(req.body);
-    const result = await updateOne(data.id, data.description, data.done);
+    const result = await updateOne(
+      data.id,
+      data.description,
+      data.done,
+      session.userId as string
+    );
     res.status(200).json({ message: "Sucesso", todo: result });
-  }
-
-  if (req.method === "GET") {
-    const data = await getAllTodos();
-    res.status(200).json(data);
   }
 }

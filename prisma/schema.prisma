@@ -13,9 +13,12 @@ datasource db {
 }
 
 model todo{
-  id Int @id @default(autoincrement())
-  description String @db.Text()
-  done  Boolean    @default(false)
+  id Int  @default(autoincrement())
+  description String    @db.Text()
+  done        Boolean   @default(false)
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@id([id, userId])
 }
 
 model Account {
@@ -31,8 +34,7 @@ model Account {
   scope              String?
   id_token           String?  @db.Text
   session_state      String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -53,6 +55,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  todos         todo[]
 }
 
 model VerificationToken {
