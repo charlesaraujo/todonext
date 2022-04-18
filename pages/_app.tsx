@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         id="adsense"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4491598321720758"
         crossOrigin="anonymous"
+        async
       />
       <SessionProvider session={pageProps.session}>
         <AppWrapper>
