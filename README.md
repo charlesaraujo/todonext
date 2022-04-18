@@ -1,8 +1,9 @@
 <h1  align="center">
-	afazer.app
+	A fazer
 </h1>
 <p  align="center">
-Um simples Todo app para testar tecnologias  <a href="https://afazer.app"  target="_blank">afazer.app</a> as ferramentas utilizadas estão no "About" deste projeto
+<a href="https://afazer.app"  target="_blank">afazer.app</a><br/>
+Um simples Todo app para testar tecnologias   <br/> As ferramentas utilizadas estão no "About" deste projeto
 </p>
 
 ### :rocket: Rodar o projeto
