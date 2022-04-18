@@ -10,18 +10,16 @@ import AppWrapper from "../components/appWrapper";
 // TODO github about
 // TODO add capacitor
 // TODO melhorias lighthouse webpagetest e pwabuilder
-// TODO adsense https://medium.com/nextjs/how-to-add-google-adsense-in-your-nextjs-89e439f74de3
+// TODO adsense https://medium.com/nextjs/how-to-add-google-adsense-in-your-nextjs-89e439f74de3 https://www.npmjs.com/package/next-pwa
 // TODO CSP header https://nextjs.org/docs/api-reference/next.config.js/headers
-// TODO Margem botton todo page
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <script
+      <Script
         id="adsense"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4491598321720758"
         crossOrigin="anonymous"
-        async
       />
       <SessionProvider session={pageProps.session}>
         <AppWrapper>

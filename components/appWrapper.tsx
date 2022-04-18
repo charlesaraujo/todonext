@@ -34,7 +34,13 @@ export default function AppWrapper({ children }: any) {
         theme={{ ...DefaultTheme, colorScheme: theme }}
       >
         <AuthWrapper>
-          <AppShell padding="md" header={<Header />}>
+          <AppShell
+            header={<Header />}
+            sx={(theme) => ({
+              paddingBottom: theme.spacing.xl,
+              marginBottom: theme.spacing.xl,
+            })}
+          >
             {children}
           </AppShell>
         </AuthWrapper>
