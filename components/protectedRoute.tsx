@@ -8,9 +8,10 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { status } = useSession();
   const router = useRouter();
   useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/");
-    }
+    // redirecionando pra index sempre pois a pagina todo nao vai mais existir
+    // if (status === "unauthenticated") {
+    router.push("/");
+    // }
   }, [router, status]);
 
   if (status === "loading")

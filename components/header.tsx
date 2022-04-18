@@ -3,15 +3,25 @@ import { Divider, Title, Button, Container, Box, Loader } from "@mantine/core";
 import { AiFillGithub, AiOutlineLogout } from "react-icons/ai";
 import { signIn, useSession, signOut } from "next-auth/react";
 import ThemeButton from "./themeButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTodoStore } from "../state/todo.state";
+import { mutate } from "swr";
 
 const Header = () => {
   const [load, setLoad] = useState(false);
   const { status } = useSession();
+  const { setSession } = useTodoStore();
+
+  useEffect(() => {
+    setSession(status);
+    if (status !== "loading") {
+      mutate("getTodos");
+    }
+  }, [status]);
 
   const handleSignIn = async () => {
     setLoad(true);
-    await signIn("github", { callbackUrl: "/todos" });
+    await signIn("github", { callbackUrl: "/" });
   };
   const handleSignOut = async () => {
     setLoad(true);
@@ -51,9 +61,9 @@ const Header = () => {
           </Box>
         ) : status === "authenticated" ? (
           <Box>
-            <Link href="/todos" passHref>
+            {/* <Link href="/todos" passHref>
               <Button component="a">Tarefas</Button>
-            </Link>
+            </Link> */}
             <Button
               variant="subtle"
               loading={load}
