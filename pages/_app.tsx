@@ -1,5 +1,5 @@
 import type { AppProps } from "next/app";
-import Script from "next/script";
+// import Script from "next/script";
 import { SessionProvider } from "next-auth/react";
 import AppWrapper from "../components/appWrapper";
 
@@ -18,11 +18,11 @@ import AppWrapper from "../components/appWrapper";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Script
+      {/* <Script
         id="adsense"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4491598321720758"
         crossOrigin="anonymous"
-      />
+      /> */}
       <SessionProvider session={pageProps.session}>
         <AppWrapper>
           <main>
