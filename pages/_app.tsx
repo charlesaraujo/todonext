@@ -14,6 +14,7 @@ import AppWrapper from "../components/appWrapper";
 // TODO adicionar mais opções de login
 // TODO colocar avatar do usuario
 // TODO descobrir se usuario é novo e salvar os todos adicionados antes do login
+// TODO update dependecies
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
