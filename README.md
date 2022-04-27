@@ -20,7 +20,7 @@ Instale as dependencias e crie o banco de dados
 cd todonext && yarn && npx prisma db push
 ```
 
-Agra é só alegria
+Agora é só alegria
 
 ```sh
 yarn dev
